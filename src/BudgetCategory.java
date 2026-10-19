@@ -18,12 +18,12 @@ public class BudgetCategory implements Comparable<BudgetCategory> {
         double diff = limit-spent;
         double otherdiff = other.limit-other.spent;
         if(diff<otherdiff){
-            return -1;
+            return 1;
         }
         if(diff==otherdiff){
             return 0;
         }
-        return 1;
+        return -1;
     }
 
     public String getName() {

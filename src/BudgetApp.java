@@ -1,6 +1,8 @@
 import java.util.List;
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Collections;
 
 public class BudgetApp {
     public static void main(String[] args) {
@@ -23,8 +25,9 @@ public class BudgetApp {
             //System.out.println("The budget limit for " + category + " was: " + limitString + 
                                //" but the actual spend was " + spentString);
         }
-
+        Collections.sort(budgets,Comparator.reverseOrder());
         System.out.println(budgets);
+        System.out.println(budgetDifference(budgets));
     }
 
     /**
@@ -43,6 +46,10 @@ public class BudgetApp {
         // TODO: You will implement this method in Wave 4
         // Note that this method SHOULD NOT have a print statement.
         // It should instead return the value.
-        return -1;
+        int count = 0;
+        for(BudgetCategory i:categories){
+            count += (i.getLimit()-i.getSpent());
+        }
+        return count;
     }
 }
