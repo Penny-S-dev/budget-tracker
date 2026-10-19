@@ -28,6 +28,7 @@ public class BudgetApp {
         Collections.sort(budgets,Comparator.reverseOrder());
         System.out.println(budgets);
         System.out.println(budgetDifference(budgets));
+        System.out.println("%"+percentOver(budgets)+" of your categories are over-budget.");
     }
 
     /**
@@ -51,5 +52,16 @@ public class BudgetApp {
             count += (i.getLimit()-i.getSpent());
         }
         return count;
+    }
+
+    public static double percentOver(List<BudgetCategory> categories){
+        double count = 0;
+        for(BudgetCategory i:categories){
+            if(i.getLimit()-i.getSpent()<0){
+                count++;
+            }
+        }
+
+        return count/categories.size()*100;
     }
 }
